@@ -9,16 +9,18 @@ const app = express();
 const port = process.env.PORT || 4004;
 
 connectDB();
-// middle wire
+
+// pre defined middle wire
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({credential: true}));
 
 
-// API END point
+// API END point (root)
 app.get('/', (req, res)=>{
     res.send('API is working')
 })
+// 
 app.use('/api/auth', authRouter)
 
 app.listen(port, ()=>{
